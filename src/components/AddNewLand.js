@@ -3,10 +3,11 @@ import { useState } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import { API_KEY } from '../config/config';
 
 const AddNewLand = ({ token }) => {
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyBqPaPY4ARBXNKY2b2ezTcFRT317K8E9lU'
+        googleMapsApiKey: API_KEY
     });
 
     const [newMarker, setNewMarkers] = useState([]);
@@ -55,21 +56,11 @@ const AddNewLand = ({ token }) => {
                     setEmailLand('');
                 }
 
-                /*             if (res.data.status === 'OK') {
-                                const token = res.data.token;
-                                setUserLogin(true);
-                                setToken(token);
-                                setErrorPassword(false);
-                                localStorage.setItem('token', JSON.stringify({ token: token, userId: res.data.user }))
-                            } else {
-                                setErrorPassword(true);
-                            }*/
             }
             );
         } else {
             console.log('errores en los datos')
         }
-
     }
 
     const drawPolygon = (e) => {
@@ -148,7 +139,6 @@ const AddNewLand = ({ token }) => {
             <Button variant="secondary" onClick={cancelPolygon}>
                 Cancelar
             </Button>
-
 
             {openMarker &&
                 <Form>

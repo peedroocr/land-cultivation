@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllMarkers, fetchMarkers } from '../features/markers/markersSlice';
 import MarkerComponents from './MarkerComponent';
+import { API_KEY } from '../config/config';
 
 const GoogleMapBox = ({ token, userId }) => {
 
@@ -14,7 +15,7 @@ const GoogleMapBox = ({ token, userId }) => {
     }, [])
 
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyBqPaPY4ARBXNKY2b2ezTcFRT317K8E9lU'
+        googleMapsApiKey: API_KEY
     })
 
     return (<div>

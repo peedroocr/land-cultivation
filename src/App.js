@@ -8,7 +8,7 @@ import NavBar from './components/NavBar';
 import Register from './components/Register';
 import GoogleMapBox from './components/GoogleMapBox';
 import Login from './components/Login';
-import Home from "./components/Home";
+
 import AddNewLand from "./components/AddNewLand";
 import ErrorPage from "./components/ErrorPage";
 
@@ -18,7 +18,7 @@ import ErrorPage from "./components/ErrorPage";
 const App = () => {
     const [userLogin, setUserLogin] = useState(false);
     const [token, setToken] = useState('');
-    const [userName, setUserName] = useState('');
+    
     const [userId, setUserId] = useState('');
 
     const getToken = async () => {
@@ -30,7 +30,6 @@ const App = () => {
                         setUserId(res.data.userId)
                         setUserLogin(true);
                         setToken(localStorageToken.token);
-                        setUserName(res.data.userName)
                     }
                 })
         };

@@ -1,13 +1,11 @@
 import { useJsApiLoader, GoogleMap } from '@react-google-maps/api'
 
-import { useRef, useEffect } from "react";
-
-//AIzaSyBqPaPY4ARBXNKY2b2ezTcFRT317K8E9lU
-
 const GoogleMapBox = () => {
+    console.log(API_KEY)
+
 
     const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: 'AIzaSyDxeGjXqTECyi2e3ezrYN0nQSd9fXOqxgY'
+        googleMapsApiKey: API_KEY
     })
     return (<div>
         {isLoaded ? 'AAAAAA' : null}

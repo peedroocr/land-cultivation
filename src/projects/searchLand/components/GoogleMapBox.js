@@ -1,15 +1,19 @@
 import { useJsApiLoader, GoogleMap } from '@react-google-maps/api'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllMarkers, fetchMarkers } from '../features/markers/markersSlice';
 import MarkerComponents from './MarkerComponent';
-
+import { API_KEY } from '../../../config/config';
 const GoogleMapBox = ({ token, userId }) => {
-
+    console.log(API_KEY)
     const dispatch = useDispatch();
     const allMarkers = useSelector(selectAllMarkers);
 
+    const [api, setApi] = useState(API_KEY)
+
+
     useEffect(() => {
+        console.log(api)
         dispatch(fetchMarkers());
     }, [])
 
@@ -24,12 +28,15 @@ const GoogleMapBox = ({ token, userId }) => {
                     center={{ lat: 40.416775, lng: -3.703790 }}
                     zoom={10}
                     mapContainerStyle={{ width: '100%', height: '100%' }}>
-                    {allMarkers.map((marker, index) => {
+                    {allMarkers.map((marker) => {
                         return (<MarkerComponents token={token} userId={userId} key={marker.id} marker={marker} />)
                     })}
                 </GoogleMap>
+
+
             </div> : null
         }
+
     </div >
     )
 }
